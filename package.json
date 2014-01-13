@@ -5,9 +5,7 @@
     "dependencies": {
         "socket.io-client": "latest",
         "forever": "latest",
-        "request" : "*",
-  		"xmldom": "*",
-  		"xpath": "*"
+        "request" : "*"
     },
     "author": "Peter Bracken"
 }
