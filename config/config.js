@@ -1,4 +1,5 @@
 module.exports = {
+
 	hostname: "hostname", 
 	instance: "VersionOne",
 	username: "admin",
@@ -8,4 +9,5 @@ module.exports = {
 	status: 'Prepared',
 	scope: 'Release Name',
 	room: 'TeamRoom'
+	
 };
