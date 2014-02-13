@@ -7,24 +7,52 @@ var VersionOne = require('./lib/VersionOne').VersionOne,
 // join the room
 socket.emit('room', config.room);
 
+//When a scopes request event is fired, fire a scopesResponse
+socket.on('scopesRequest', function() {
+
+    v1.getScopes({
+        success: function(results) {
+            var scopes = [],
+                v1Scopes = JSON.parse(results);
+
+            if (v1Scopes.Assets && v1Scopes.Assets.length > 0) {
+                for (var i = 0; i < v1Scopes.Assets.length; i++) {
+                    var Asset = v1Scopes.Assets[i];
+
+                    scopes.push({
+                        scopeId: Asset.id,
+                        name: Asset.SecurityScope.Name.value
+                    });
+                }
+            }
+
+            socket.emit('scopesResponse', scopes);
+        },
+        failure: function(response, body) {
+            socket.emit('scopesResponse', null);
+        }
+    });
+
+});
+
 //When a backlog request event is fired, fire a backlogResponse
-socket.on('backlogRequest', function() {
+socket.on('backlogRequest', function(scope) {
 	v1.query({
 		select: [],
 		from: 'Story',
 		where: {
 			'Status.Name': config.status,
-			'Scope.Name': config.scope
+			'Scope.Name': scope.name
 		},
 		success: function(results) {
-		
+
 			var backlogs = [],
 				v1Backlogs = JSON.parse(results);
-			
+
 			if (v1Backlogs.Assets && v1Backlogs.Assets.length > 0) {
 				for (var i = 0; i < v1Backlogs.Assets.length; i++) {
 					var Asset = v1Backlogs.Assets[i];
-					
+
 					backlogs.push({
 						assetId: Asset.id,
 						id: Asset.Attributes.Number.value,
@@ -34,15 +62,15 @@ socket.on('backlogRequest', function() {
 					});
 				}
 			}
-			
+
 			socket.emit('backlogResponse', backlogs);
 		},
 		failure: function(response, body) {
 			socket.emit('backlogResponse', null);
 		}
 	});
-	
 });
+
 
 /**
 * When a backlog is saved.
