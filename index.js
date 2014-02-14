@@ -21,7 +21,7 @@ socket.on('scopesRequest', function() {
 
                     scopes.push({
                         scopeId: Asset.id,
-                        name: Asset.SecurityScope.Name.value
+                        name: Asset.Attributes['SecurityScope.Name'].value
                     });
                 }
             }
