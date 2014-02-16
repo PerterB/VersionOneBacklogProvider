@@ -7,7 +7,6 @@ module.exports = {
 	port: "80",
 	protocol: "http",
 	status: 'Prepared',
-	scope: 'Release Name',
-	room: 'TeamRoom'
-	
+	room: 'TeamRoom',
+    mockData: true
 };

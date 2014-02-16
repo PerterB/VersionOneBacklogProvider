@@ -1,0 +1,38 @@
+{"_type": "Assets", "total": 3, "pageSize": 2147483647, "pageStart": 0, "Assets": [
+    {
+        "_type": "Asset",
+        "href": "/VersionOne/rest-1.v1/Data/Scope/0001",
+        "id": "Scope:0001",
+        "Attributes": {
+            "SecurityScope.Name": {
+                "_type": "Attribute",
+                "name": "SecurityScope.Name",
+                "value": "Summer 2014 Release"
+            }
+        }
+    },
+    {
+        "_type": "Asset",
+        "href": "/VersionOne/rest-1.v1/Data/Scope/0002",
+        "id": "Scope:0002",
+        "Attributes": {
+            "SecurityScope.Name": {
+                "_type": "Attribute",
+                "name": "SecurityScope.Name",
+                "value": "Autumn 2014 Release"
+            }
+        }
+    },
+    {
+        "_type": "Asset",
+        "href": "/VersionOne/rest-1.v1/Data/Scope/0003",
+        "id": "Scope:0003",
+        "Attributes": {
+            "SecurityScope.Name": {
+                "_type": "Attribute",
+                "name": "SecurityScope.Name",
+                "value": "Winter 2014 Release"
+            }
+        }
+    }
+]}

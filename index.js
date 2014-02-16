@@ -2,7 +2,7 @@ var VersionOne = require('./lib/VersionOne').VersionOne,
 	config = require('./config/config'),
 	client = require('socket.io-client'),
 	socket = client.connect('http://localhost:3000'),
-    v1 = new VersionOne(config.hostname, config.instance, config.username, config.password, config.port, config.protocol, false);
+    v1 = new VersionOne(config.hostname, config.instance, config.username, config.password, config.port, config.protocol, config.mockData);
 
 	
 // join the room

@@ -1,0 +1,44 @@
+{
+    "_type": "Assets",
+    "total": 18,
+    "pageSize": 2147483647,
+    "pageStart": 0,
+    "Assets": [
+        {
+            "_type": "Asset",
+            "href": "/VersionOne/rest-1.v1/Data/StoryStatus/0001",
+            "id": "StoryStatus:0001",
+            "Attributes": {
+                "Name": {
+                    "_type": "Attribute",
+                    "name": "Name",
+                    "value": "Grooming"
+                }
+            }
+        },
+        {
+            "_type": "Asset",
+            "href": "/VersionOne/rest-1.v1/Data/StoryStatus/0002",
+            "id": "StoryStatus:0002",
+            "Attributes": {
+                "Name": {
+                    "_type": "Attribute",
+                    "name": "Name",
+                    "value": "Prepared"
+                }
+            }
+        },
+        {
+            "_type": "Asset",
+            "href": "/VersionOne/rest-1.v1/Data/StoryStatus/0003",
+            "id": "StoryStatus:0003",
+            "Attributes": {
+                "Name": {
+                    "_type": "Attribute",
+                    "name": "Name",
+                    "value": "Sprint Ready"
+                }
+            }
+        }
+    ]
+}
