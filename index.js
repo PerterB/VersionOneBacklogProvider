@@ -2,7 +2,8 @@ var VersionOne = require('./lib/VersionOne').VersionOne,
 	config = require('./config/config'),
 	client = require('socket.io-client'),
 	socket = client.connect('http://localhost:3000'),
-    v1 = new VersionOne(config.hostname, config.instance, config.username, config.password, config.port, config.protocol);
+    v1 = new VersionOne(config.hostname, config.instance, config.username, config.password, config.port, config.protocol, false);
+
 	
 // join the room
 socket.emit('room', config.room);
@@ -35,6 +36,31 @@ socket.on('scopesRequest', function() {
 
 });
 
+//return a list of statuses
+socket.on('statusRequest', function() {
+
+    v1.getStatuses({
+        success: function(body) {
+            var results = JSON.parse(body);
+            var statuses = [];
+
+            for (var i = 0; i < results.Assets.length; i++) {
+                var status = {};
+
+                statuses.push({
+                    name: results.Assets[i].Attributes.Name.value,
+                    id: results.Assets[i].id
+                })
+            }
+            socket.emit('statusResponse', statuses);
+        },
+        failure: function(response, body) {
+            socket.emit('statusResponse', null);
+        }
+    });
+
+});
+
 //When a backlog request event is fired, fire a backlogResponse
 socket.on('backlogRequest', function(scope) {
 	v1.query({
@@ -47,22 +73,26 @@ socket.on('backlogRequest', function(scope) {
 		success: function(results) {
 
 			var backlogs = [],
-				v1Backlogs = JSON.parse(results);
+				v1Backlogs;
+            if (v1.mockData) {
+                backlogs = JSON.parse(results);
+            } else {
+                v1Backlogs = JSON.parse(results);
+                if (v1Backlogs.Assets && v1Backlogs.Assets.length > 0) {
 
-			if (v1Backlogs.Assets && v1Backlogs.Assets.length > 0) {
-				for (var i = 0; i < v1Backlogs.Assets.length; i++) {
-					var Asset = v1Backlogs.Assets[i];
-
-					backlogs.push({
-						assetId: Asset.id,
-						id: Asset.Attributes.Number.value,
-						href: v1.buildBacklogUrl(Asset.id),
-						title: Asset.Attributes.Name.value,
-						description: Asset.Attributes.Description.value
-					});
-				}
-			}
-
+                    for (var i = 0; i < v1Backlogs.Assets.length; i++) {
+                        var Asset = v1Backlogs.Assets[i];
+                        console.log(Asset);
+                        backlogs.push({
+                            assetId: Asset.id,
+                            id: Asset['Attributes.Number'].value,
+                            href: v1.buildBacklogUrl(Asset.id),
+                            title: Asset['Attributes.Name'].value,
+                            description: Asset['Attributes.Description'].value
+                        });
+                    }
+                }
+            }
 			socket.emit('backlogResponse', backlogs);
 		},
 		failure: function(response, body) {
@@ -86,6 +116,19 @@ socket.on('backlogReadyRequest', function(backlogData) {
 		}
 	});
 	
+});
+
+socket.on('changeStatus', function(statusData) {
+
+    v1.updateStatus(statusData.backlogId, statusData.statusName, function(error, response, body) {
+
+        if (error) {
+            socket.emit('changeStatusResponse', false);
+        } else {
+            socket.emit('changeStatusResponse', true);
+        }
+    });
+
 });
 console.log('VersionOne Backlog Provider Running');
 
