@@ -8,5 +8,6 @@ module.exports = {
 	protocol: "http",
 	status: 'Prepared',
 	room: 'TeamRoom',
+    socketHost: 'http://localhost:3000',
     mockData: true
 };
