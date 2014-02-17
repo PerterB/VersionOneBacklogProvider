@@ -85,10 +85,10 @@ socket.on('backlogRequest', function(scope) {
                         console.log(Asset);
                         backlogs.push({
                             assetId: Asset.id,
-                            id: Asset['Attributes.Number'].value,
+                            id: Asset.Attributes.Number.value,
                             href: v1.buildBacklogUrl(Asset.id),
-                            title: Asset['Attributes.Name'].value,
-                            description: Asset['Attributes.Description'].value
+                            title: Asset.Attributes.Name.value,
+                            description: Asset.Attributes.Description.value
                         });
                     }
                 }
