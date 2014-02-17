@@ -108,7 +108,7 @@ var VersionOne = require('./lib/VersionOne').VersionOne,
                                     var Asset = v1Backlogs.Assets[i];
                                     console.log(Asset);
                                     backlogs.push({
-                                        assetId: Asset.id,
+                                        assetId: Asset.id.split(':')[1],
                                         id: Asset.Attributes.Number.value,
                                         href: v1.buildBacklogUrl(Asset.id),
                                         title: Asset.Attributes.Name.value,
@@ -147,9 +147,15 @@ var VersionOne = require('./lib/VersionOne').VersionOne,
                 v1.updateStatus(statusData.backlogId, statusData.statusName, function(error, response, body) {
 
                     if (error) {
-                        socket.emit('changeStatusResponse', false);
+                        socket.emit('changeStatusResponse', {
+                            backlogId: statusData.backlogId,
+                            success: false
+                        });
                     } else {
-                        socket.emit('changeStatusResponse', true);
+                        socket.emit('changeStatusResponse', {
+                            backlogId: statusData.backlogId,
+                            success: true
+                        });
                     }
                 });
 
