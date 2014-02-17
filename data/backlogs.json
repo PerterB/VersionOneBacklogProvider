@@ -1,27 +1,27 @@
 [
     {
-        "assetId": "Story:0001",
+        "assetId": "0001",
         "id": "B-1234",
         "href": "http://servername/VersionOne/story.mvc/Summary?oidToken=Story:0001",
         "title": "Poker Planning - As a scrum master I want to be able to change the status of a backlog",
         "description": "<p>&nbsp;</p>\n<p class=\"MsoNormal\"><strong>DESCRIPTION:</strong></p>\n<b>HTML Description etc. etc. <br />Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae culpa expedita facilis inventore laudantium libero magnam natus nesciunt nihil odit optio perferendis quasi quibusdam quisquam sequi, tempore velit veniam voluptatibus.</b>"
     },
     {
-        "assetId": "Story:0002",
+        "assetId": "0002",
         "id": "B-5678",
         "href": "http://servername/VersionOne/story.mvc/Summary?oidToken=Story:0002",
         "title": "Poker Planning - As a user I want to see the details of each backlog",
         "description": "<p>&nbsp;</p>\n<p class=\"MsoNormal\"><strong>DESCRIPTION:</strong></p>\n<b>HTML Description etc. etc. <br />Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae culpa expedita facilis inventore laudantium libero magnam natus nesciunt nihil odit optio perferendis quasi quibusdam quisquam sequi, tempore velit veniam voluptatibus.</b>"
     },
     {
-        "assetId": "Story:0003",
+        "assetId": "0003",
         "id": "B-4321",
         "href": "http://servername/VersionOne/story.mvc/Summary?oidToken=Story:0003",
         "title": "Poker Planning - As a user I want to be able to open the backlog in a new window",
         "description": "<p>&nbsp;</p>\n<p class=\"MsoNormal\"><strong>DESCRIPTION:</strong></p>\n<b>HTML Description etc. etc. <br />Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae culpa expedita facilis inventore laudantium libero magnam natus nesciunt nihil odit optio perferendis quasi quibusdam quisquam sequi, tempore velit veniam voluptatibus.</b>"
     },
     {
-        "assetId": "Story:0004",
+        "assetId": "0004",
         "id": "B-9876",
         "href": "http://servername/VersionOne/story.mvc/Summary?oidToken=Story:0004",
         "title": "Poker Planning - As a scrum master I want to be able to update a backlog to Sprint Ready",
