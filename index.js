@@ -134,9 +134,15 @@ var VersionOne = require('./lib/VersionOne').VersionOne,
                 // update and respond.
                 v1.update(backlogData.backlogId, backlogData.estimate, backlogData.status, function(error, response, body) {
                     if (error) {
-                        socket.emit('backlogSaveResponse', false);
+                        socket.emit('backlogReadyResponse', {
+                            backlogId: backlogData.backlogId,
+                            success: false
+                        });
                     } else {
-                        socket.emit('backlogSaveResponse', true);
+                        socket.emit('backlogReadyResponse', {
+                            backlogId: backlogData.backlogId,
+                            success: true
+                        });
                     }
                 });
 
