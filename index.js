@@ -32,6 +32,8 @@ var VersionOne = require('./lib/VersionOne').VersionOne,
             // join the room
             socket.emit('room', config.room);
 
+            v1.init();
+
             //When a scopes request event is fired, fire a scopesResponse
             socket.on('scopesRequest', function() {
 
@@ -106,7 +108,6 @@ var VersionOne = require('./lib/VersionOne').VersionOne,
 
                                 for (var i = 0; i < v1Backlogs.Assets.length; i++) {
                                     var Asset = v1Backlogs.Assets[i];
-                                    console.log(Asset);
                                     backlogs.push({
                                         assetId: Asset.id.split(':')[1],
                                         id: Asset.Attributes.Number.value,
