@@ -29,3 +29,13 @@ Run
 ---
 
     node index.js
+
+Features
+--------
+ - Select Project scope (lists scopes that have either no EndDate or and EndDate in the future)
+ - Lists backlogs in a configured state ('Prepared' status by default)
+ - Vote on each backlog item. 
+ - Team Members can see the backlog number, title and description
+ - Team Members see a link to open the Backlog in VersionOne
+ - Backlog Status and Estimate is updated automatically on Final Vote
+ - Scrum Master can change the status of a backlog (e.g. Set to 'Technical Grooming')
