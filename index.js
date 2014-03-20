@@ -96,6 +96,7 @@ var VersionOne = require('./lib/VersionOne').VersionOne,
                         'Status.Name': config.status,
                         'Scope.Name': scope.name
                     },
+                    sort: config.sort,
                     success: function(results) {
 
                         var backlogs = [],
